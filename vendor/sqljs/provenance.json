@@ -1,0 +1,20 @@
+{
+  "repository": "https://github.com/sql-js/sql.js",
+  "version": "v1.15.2",
+  "archive_url": "https://github.com/sql-js/sql.js/releases/download/v1.15.2/sqljs-wasm.zip",
+  "license": "MIT",
+  "license_url": "https://raw.githubusercontent.com/sql-js/sql.js/v1.15.2/LICENSE",
+  "fetched_on": "2026-10-29",
+  "files": [
+    {
+      "file": "sql-wasm.js",
+      "bytes": 47441,
+      "sha256": "b46d4bddfdde8a787fc4764bd0a405cdfdf96fbd77e6a4e95446106826ecfa47"
+    },
+    {
+      "file": "sql-wasm.wasm",
+      "bytes": 685235,
+      "sha256": "0dfeecda2070b36da0cd4f6afa250af9453de528a983770f85b13d5d6b667572"
+    }
+  ]
+}
