@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Backend Atölyesi",
   "short_name": "Atölye",
-  "description": "Türkçe / English learning workshop for C#, ASP.NET Core, SQL and LLM concepts.",
+  "description": "C#, ASP.NET Core ve SQL Server ile 16 haftalık backend öğrenme yolu.",
   "lang": "tr",
   "dir": "ltr",
   "start_url": "./?source=pwa",

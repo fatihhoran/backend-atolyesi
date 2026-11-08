@@ -11,7 +11,8 @@ function metrics(s,C,now=new Date()){
  const modules=C.modules.map(m=>{const ls=C.lessons.filter(l=>l.module===m.id),done=ls.filter(l=>s.completed.includes(l.id)).length;return {title:m.title,id:m.id,total:ls.length,done,pct:Math.round(done/ls.length*100)};});
  const history=s.history.slice(-10).map(h=>({...h,pct:Math.round(h.score/h.total*100)}));
  const total=s.history.reduce((a,h)=>a+h.total,0),score=s.history.reduce((a,h)=>a+h.score,0);
- return {days,modules,history,total,score,accuracy:total?Math.round(score/total*100):null,done:s.completed.length,pct:Math.round(s.completed.length/C.lessons.length*100)};
+ const done=modules.reduce((sum,module)=>sum+module.done,0);
+ return {days,modules,history,total,score,accuracy:total?Math.round(score/total*100):null,done,pct:Math.round(done/C.lessons.length*100)};
 }
 function overview(){const {C,getState}=A,m=metrics(getState(),C);return `<section class="progress-teaser"><div class="mini-ring" style="--progress:${m.pct}%"><strong>${m.pct}<small>%</small></strong></div><div><span class="eyebrow">KENDİ GELİŞİMİNİ GÖR</span><h2>Küçük adımların birikiyor.</h2><p>${m.done} / ${C.lessons.length} ders · ${getState().history.length} tamamlanan test · ${m.accuracy===null?'İlk testinle grafiğin başlayacak.':'Testlerde toplam doğru oranı %'+m.accuracy}</p></div><a href="#progress" class="button button-outline">Grafiklerim →</a></section>`;}
 function progress(){const {C,getState,heading,esc}=A,s=getState(),m=metrics(s,C),max=Math.max(1,...m.days.map(d=>d.total));
