@@ -68,6 +68,7 @@ function home({ C, state, esc, icon, english }) {
       <h1>${greeting}</h1>
       <p>${english ? 'Six weeks of practical backend study, from C# to TaskFlow.' : 'C#’tan TaskFlow’a uzanan 6 haftalık uygulamalı backend programın.'}</p>
     </div>
+    ${state.profileAcknowledged||state.displayName?'':window.PublicFeatures.profileForm(true)}
     <div class="brand-home-top">
       <section class="brand-hero">
         <div class="brand-hero-copy">

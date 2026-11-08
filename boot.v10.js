@@ -24,8 +24,10 @@ const script=name=>new Promise((resolve,reject)=>{const s=document.createElement
   if(en)await script('english.v5.js');
   await script('curriculum.v6.js');
   for(const name of ['academy-content','academy-practice','academy'])await script(name+'.v7.js');
-  await script('brand.v8.js');
-  for(const name of ['features','install','public-features','app'])await script(name+(en?'.en':'')+(name==='public-features'?'.v6.js':'.v8.js'));
+  await script('reminders.v10.js');
+  await script('brand.v10.js');
+  const uiVersions={features:8,install:10,'public-features':6,app:10};
+  for(const [name,version] of Object.entries(uiVersions))await script(name+(en?'.en':'')+'.v'+version+'.js');
   document.querySelector('#main')?.removeAttribute('aria-busy');
   if(en){const note=document.createElement('p');note.className='locale-code-note';note.textContent='Example identifiers and sample database values stay in Turkish so both languages use the same code and SQL exercises.';document.querySelector('.page-footer')?.prepend(note);}
  }catch(error){const main=document.querySelector('#main');if(main){main.textContent=en?'The workshop could not load. Connect to the internet and reload the page.':'Atölye açılamadı. İnternete bağlanıp sayfayı yenile.';main.removeAttribute('aria-busy');}console.error(error);}

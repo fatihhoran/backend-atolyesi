@@ -75,7 +75,7 @@ for (const lang of ['tr', 'en']) {
     context.Academy = context.window.Academy;
     context.sqlIds = ['join'];
     context.allLessons = [...course.lessons, ...course.archiveLessons];
-    const source = read(`app${suffix}.v8.js`);
+    const source = read(`app${suffix}.v10.js`);
     const validateState = vm.runInContext(
       source.slice(source.indexOf('const defaults='), source.indexOf('try{const raw=')) + '\nvalidateState;',
       context
@@ -103,11 +103,12 @@ test('the new boot script, academy and both language bundles are available offli
   const sw = read('sw.js');
   const assets = JSON.parse(sw.match(/const ASSETS=(\[[^;]+\]);/)[1]);
   assert.ok(assets.includes('./curriculum.v6.js'));
-  for (const name of ['app', 'app.en', 'boot', 'brand', 'features', 'features.en']) assert.ok(assets.includes('./' + name + '.v8.js'));
+  for (const name of ['app', 'app.en', 'boot', 'brand', 'install', 'install.en', 'reminders']) assert.ok(assets.includes('./' + name + '.v10.js'));
+  for (const name of ['features', 'features.en']) assert.ok(assets.includes('./' + name + '.v8.js'));
   for (const name of ['academy', 'academy-content', 'academy-practice', 'sql-worker']) assert.ok(assets.includes('./' + name + '.v7.js'));
   assert.ok(assets.includes('./downloads/Atolye_Yerel_Pratik.zip'));
   assert.ok(assets.includes('./brand/illustrations.svg'));
-  assert.ok(read('index.html').includes('./boot.v8.js'));
+  assert.ok(read('index.html').includes('./boot.v10.js'));
   for (const asset of assets) assert.ok(existsSync(path.join(__dirname, '..', asset)), asset);
 });
 
