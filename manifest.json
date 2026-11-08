@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Backend Atölyesi",
   "short_name": "Atölye",
-  "description": "C#, ASP.NET Core ve SQL Server ile 16 haftalık backend öğrenme yolu.",
+  "description": "C#, ASP.NET Core ve SQL Server ile 6 haftalık yoğun backend öğrenme yolu.",
   "lang": "tr",
   "dir": "ltr",
   "start_url": "./?source=pwa",

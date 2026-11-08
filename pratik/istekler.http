@@ -1,0 +1,38 @@
+@base = http://127.0.0.1:5088
+
+### Sağlık
+GET {{base}}/health
+
+### Hafta 2 · Ürün ekle
+POST {{base}}/api/urunler
+Content-Type: application/json
+
+{"ad":"Defter","fiyat":30}
+
+### Hafta 2 · Fiyatı değiştir, ID'yi 201 yanıtından al
+PATCH {{base}}/api/urunler/1/fiyat
+Content-Type: application/json
+
+{"fiyat":39.90}
+
+### Hafta 3 · Görev ekle
+POST {{base}}/api/gorevler
+Content-Type: application/json
+
+{"baslik":"SQL Server ile kalıcılık"}
+
+### Hafta 4 · Kayıt için yerel eğitim hesabı bilgilerini istemciden gir
+POST {{base}}/auth/register
+Content-Type: application/json
+
+{"email":"{{localTestEmail}}","password":"{{localTestPassword}}"}
+
+### Hafta 4 · Giriş
+POST {{base}}/auth/login?useCookies=false
+Content-Type: application/json
+
+{"email":"{{localTestEmail}}","password":"{{localTestPassword}}"}
+
+### Hafta 6 · Görevleri filtrele
+GET {{base}}/api/gorevler?durum=acik&sayfa=1&boyut=10
+Authorization: Bearer {{localAccessToken}}

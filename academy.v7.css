@@ -1,0 +1,75 @@
+.academy-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}
+
+.academy-home {
+  margin: 1rem 0;
+}
+
+.academy-home .inline-buttons,
+.academy-grid .code-block,
+.academy-grid details,
+.academy-lesson-nav {
+  margin: 0.9rem 0;
+}
+
+.academy-grid ul,
+.academy-lesson-nav ol {
+  padding-inline-start: 1.4rem;
+}
+
+.academy-grid summary,
+.academy-lesson-nav summary,
+.sql-highlight summary {
+  cursor: pointer;
+}
+
+.academy-lesson-meta dl {
+  display: grid;
+  grid-template-columns: minmax(7rem, auto) 1fr;
+  gap: 0.5rem 1rem;
+  margin: 0;
+}
+
+.academy-lesson-meta dd {
+  margin: 0;
+}
+
+.academy-lesson-meta dt {
+  font-weight: 700;
+}
+
+.academy-lesson-nav a[aria-current="page"] {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.academy-grid a.filter-btn {
+  text-decoration: none;
+}
+
+.sql-highlight {
+  margin-block: 0.7rem;
+}
+
+.sql-highlight pre {
+  overflow: auto;
+  padding: 0.8rem;
+  max-height: 12rem;
+  background: #102325;
+  color: #e8f2f2;
+  border-radius: 0.5rem;
+}
+
+.syntax-keyword { color: #b9dcff; }
+.syntax-string { color: #d4e9ae; }
+.syntax-number { color: #ffc092; }
+.syntax-comment { color: #b6c1c9; }
+
+@media (max-width: 520px) {
+  .academy-lesson-meta dl {
+    grid-template-columns: 1fr;
+  }
+}

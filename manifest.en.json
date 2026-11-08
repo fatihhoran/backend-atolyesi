@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Backend Atölyesi",
   "short_name": "Atölye",
-  "description": "A 16-week backend workshop for C#, ASP.NET Core and SQL Server.",
+  "description": "A six-week intensive backend workshop for C#, ASP.NET Core and SQL Server.",
   "lang": "en",
   "dir": "ltr",
   "start_url": "./?source=pwa",
