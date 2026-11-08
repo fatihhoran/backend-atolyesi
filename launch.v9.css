@@ -1,0 +1,45 @@
+.boot-skeleton.atolye-launch {
+  box-sizing: border-box;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: .7rem;
+  min-height: min(400px, 56dvh);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.atolye-launch img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin-bottom: .3rem;
+}
+
+.atolye-launch strong {
+  font-size: 1.5rem;
+  letter-spacing: .12em;
+}
+
+.atolye-launch .loading-message {
+  margin: 0;
+  color: var(--muted);
+}
+
+@media (display-mode: standalone), (display-mode: minimal-ui) {
+  #main[aria-busy="true"] > .atolye-launch {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    max-width: none;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: #101827;
+    color: #f3f7ff;
+  }
+
+  .atolye-launch .loading-message {
+    color: #c3d1ee;
+  }
+}

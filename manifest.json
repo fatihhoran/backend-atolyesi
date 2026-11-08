@@ -1,6 +1,6 @@
 {
   "id": "./",
-  "name": "Atölye · Backend Geliştirme Akademisi",
+  "name": "Atölye",
   "short_name": "Atölye",
   "description": "C#, ASP.NET Core ve SQL Server ile 6 haftalık yoğun backend öğrenme yolu.",
   "lang": "tr",
@@ -8,24 +8,24 @@
   "start_url": "./?source=pwa",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f4f6fb",
+  "background_color": "#101827",
   "theme_color": "#101827",
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "./brand/pwa-192.png",
+      "src": "./brand/install-192.v9.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "./brand/pwa-512.png",
+      "src": "./brand/install-512.v9.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "./brand/maskable-512.png",
+      "src": "./brand/install-maskable-512.v9.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
