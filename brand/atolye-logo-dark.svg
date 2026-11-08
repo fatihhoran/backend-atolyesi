@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 404 92" role="img" aria-labelledby="title">
+  <title id="title">Atölye — Backend Geliştirme Akademisi</title>
+  <rect width="84" height="84" y="4" rx="19" fill="#202d47" stroke="#3b4b6c"/>
+  <g transform="translate(0 4) scale(.4375)">
+    <path d="M35 132 82 51a15 15 0 0 1 26 0l14 24-19 11-8-14-35 60Z" fill="#f3f7ff"/>
+    <path d="m112 99 18-10 27 47h-28Z" fill="#43d9c8"/>
+    <path d="M76 111h31l13 22H63Z" fill="#82a6ff"/>
+    <circle cx="148" cy="48" r="7" fill="#43d9c8"/>
+  </g>
+  <text x="103" y="48" fill="#f3f7ff" font-family="Segoe UI,Arial,sans-serif" font-size="43" font-weight="800" letter-spacing="3">ATÖLYE</text>
+  <text x="105" y="74" fill="#b2bfd8" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="600">Backend Geliştirme Akademisi</text>
+</svg>

@@ -3,35 +3,37 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#183d40">
+  <meta name="theme-color" content="#101827">
   <meta name="description" content="6 haftalık yoğun Türkçe backend öğrenme yolu. C#, ASP.NET Core, SQL Server, uygulamalar, mini quizler ve TaskFlow final projesi.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="manifest" href="./manifest.json" crossorigin="use-credentials">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
-  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./brand/apple-180.png?v=8">
+  <link rel="icon" href="./brand/favicon.ico?v=8" sizes="16x16 32x32 48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="./brand/favicon-32.png?v=8">
+  <link rel="icon" type="image/svg+xml" href="./brand/atolye-icon.svg?v=8">
   <link rel="stylesheet" href="./styles.v5.css">
   <link rel="stylesheet" href="./revision.v5.css">
   <link rel="stylesheet" href="./public.v5.css">
   <link rel="stylesheet" href="./academy.v7.css">
+  <link rel="stylesheet" href="./brand.v8.css">
   <style>.name-row input{width:100%;min-height:44px;padding:11px 13px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font:inherit;box-sizing:border-box}</style>
-  <meta property="og:title" content="Backend Atölyesi — Öğren, dene, pekiştir">
+  <meta property="og:title" content="Atölye · Backend Geliştirme Akademisi">
   <meta property="og:description" content="6 hafta · C#, ASP.NET Core ve SQL Server · Uygulama görevleri, mini quizler ve TaskFlow final projesi.">
   <meta property="og:type" content="website">
-  <title>Backend Atölyesi — Öğren, dene, pekiştir</title>
-  <script src="./boot.v7.js" defer></script>
+  <title>Atölye · Backend Geliştirme Akademisi</title>
+  <script src="./boot.v8.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-action="skip">İçeriğe geç</a>
   <aside class="sidebar" aria-label="Ana gezinme">
-    <a class="brand" href="#home" aria-label="Backend Atölyesi ana sayfa"><span class="brand-mark">{<i>·</i>}</span><span>backend<span class="brand-sub">ATÖLYESİ</span></span></a>
-    <div class="workspace-label">ÇALIŞMA ALANIN</div>
+    <a class="brand" href="#home" aria-label="Atölye ana sayfa"><img class="brand-wordmark" src="./brand/atolye-logo-dark.svg" width="404" height="92" alt="ATÖLYE · Backend Geliştirme Akademisi"><img class="brand-collapsed-mark" src="./brand/atolye-icon.svg" width="39" height="39" alt=""></a>
     <nav id="desktop-nav"></nav>
-    <div class="sidebar-bottom"><div class="mini-path"><span class="eyebrow">ÖĞRENME ODAĞIN</span><strong>C# / ASP.NET Core</strong><span>Başlangıçtan ilk projene</span></div><a class="sidebar-settings" href="#settings"><span data-icon="settings"></span>Ayarlar ve kurulum</a><div class="profile"><div class="avatar">Z</div><div><strong>Ziyaretçi</strong><small>Her gün bir adım</small></div><span class="online-dot" title="Yerel çalışma profili"></span></div></div>
+    <div class="sidebar-bottom"><div class="profile"><div class="avatar">Z</div><div><strong>Ziyaretçi</strong><small>Her gün bir adım</small></div><span class="online-dot" title="Yerel çalışma profili"></span></div></div>
   </aside>
   <div class="app-shell">
-    <header class="topbar"><a class="mobile-brand" href="#home"><span class="small-mark">{·}</span> Backend Atölyesi</a><span class="breadcrumb" id="breadcrumb">Çalışma alanı / Genel bakış</span><div class="header-actions"><label class="language-control"><span class="sr-only">Dil / Language</span><select id="language-select" aria-label="Dil / Language"><option value="tr">TR</option><option value="en">EN</option></select></label><span class="connection" id="connection"><span></span> Çevrimiçi</span><button class="button button-small button-outline" data-action="install" aria-label="Telefonuna kur"><span data-icon="download"></span><span class="install-text" data-install-label>Telefon kurulumu</span></button><button class="icon-button" data-action="theme" aria-label="Renk temasını değiştir" title="Renk teması"><span data-icon="moon"></span></button></div></header>
-    <main id="main" tabindex="-1" aria-busy="true"><p class="loading-message">Atölye açılıyor… / Loading your workshop…</p></main>
+    <header class="topbar"><a class="mobile-brand" href="#home"><img src="./brand/atolye-icon.svg" alt="" width="32" height="32"> ATÖLYE</a><button class="icon-button brand-nav-toggle" data-action="nav-toggle" aria-controls="desktop-nav" aria-expanded="true" aria-label="Yan menüyü daralt veya genişlet"><span data-icon="more"></span></button><span class="breadcrumb" id="breadcrumb">Çalışma alanı / Genel bakış</span><div class="header-actions"><label class="language-control"><span class="sr-only">Dil / Language</span><select id="language-select" aria-label="Dil / Language"><option value="tr">TR</option><option value="en">EN</option></select></label><span class="connection" id="connection"><span></span> Çevrimiçi</span><button class="button button-small button-outline" data-action="install" aria-label="Telefonuna kur"><span data-icon="download"></span><span class="install-text" data-install-label>Telefon kurulumu</span></button><button class="icon-button" data-action="theme" aria-label="Renk temasını değiştir" title="Renk teması"><span data-icon="moon"></span></button></div></header>
+    <main id="main" tabindex="-1" aria-busy="true"><div class="boot-skeleton" role="status"><p class="loading-message">Atölye açılıyor…</p><span aria-hidden="true"></span><span aria-hidden="true"></span></div></main>
     <footer class="page-footer"><span>Öğren. Kendin dene. Pekiştir.</span><a href="#settings">Kaynaklar ve kurulum <span aria-hidden="true">↗</span></a></footer>
   </div>
   <nav class="bottom-nav" id="mobile-nav" aria-label="Mobil gezinme"></nav>

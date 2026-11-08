@@ -164,7 +164,19 @@ function apply(course, lang) {
   course.activeQuestions = course.questions.filter(question => lessonModules.has(question.lesson));
 }
 
-const fresh = () => ({ quiz: {}, practice: {}, diagnostic: null });
+const fresh = () => ({ quiz: {}, practice: {}, links: {}, diagnostic: null });
+
+function projectLink(value) {
+  if (typeof value !== 'string' || !value.trim()) return '';
+  try {
+    const url = new URL(value.trim());
+    if (url.origin !== 'https://github.com' || url.username || url.password || url.search || url.hash ||
+      !/^\/[a-z0-9-]+\/[a-z0-9_.-]+\/?$/i.test(url.pathname)) return null;
+    return url.origin + url.pathname.replace(/\/$/, '');
+  } catch {
+    return null;
+  }
+}
 
 function validateResult(value) {
   if (!value || !Number.isSafeInteger(value.score) || !Number.isSafeInteger(value.total) ||
@@ -184,6 +196,10 @@ function validate(raw, course, sqlIds) {
   for (const id of taskIds) {
     const attempts = raw.practice?.[id];
     if (Array.isArray(attempts)) data.practice[id] = attempts.map(validateResult).filter(Boolean).slice(-10);
+  }
+  for (const project of projects) {
+    const link = projectLink(raw.links?.[project.id]);
+    if (link) data.links[project.id] = link;
   }
   if (raw.diagnostic) {
     const result = Object.fromEntries(Object.keys(diagnostics).map(key => [key, validateResult(raw.diagnostic[key])]));
@@ -372,6 +388,6 @@ function highlight(value, esc) {
   return html + esc(value.slice(cursor));
 }
 
-window.Academy = { apply, fresh, validate, diagnostics, diagnosticPool, recordQuiz, recordPractice, readReport, gradeSql,
+window.Academy = { apply, fresh, validate, diagnostics, diagnosticPool, recordQuiz, recordPractice, readReport, gradeSql, projectLink,
   overview, today, home, analytics, projectPage, lessonIntro, lessonSummary, highlight, projects };
 })();

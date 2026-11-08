@@ -7,7 +7,7 @@ const vm = require('node:vm');
 const read = filename => readFileSync(path.join(__dirname, '..', filename), 'utf8');
 
 function load(lang, intensive = false) {
-  const context = vm.createContext({ window: {} });
+  const context = vm.createContext({ window: {}, URL });
   const run = filename => vm.runInContext(read(filename), context, { filename });
   for (const name of ['content', 'expansion', 'questions-extra', 'share-content', 'resources-data', 'english']) {
     run(name + '.v5.js');
@@ -75,7 +75,7 @@ for (const lang of ['tr', 'en']) {
     context.Academy = context.window.Academy;
     context.sqlIds = ['join'];
     context.allLessons = [...course.lessons, ...course.archiveLessons];
-    const source = read(`app${suffix}.v7.js`);
+    const source = read(`app${suffix}.v8.js`);
     const validateState = vm.runInContext(
       source.slice(source.indexOf('const defaults='), source.indexOf('try{const raw=')) + '\nvalidateState;',
       context
@@ -91,7 +91,7 @@ for (const lang of ['tr', 'en']) {
     };
     const restored = validateState(old);
     for (const key of Object.keys(old)) assert.deepEqual(JSON.parse(JSON.stringify(restored[key])), old[key], key);
-    assert.deepEqual(JSON.parse(JSON.stringify(restored.academy)), { quiz: {}, practice: {}, diagnostic: null });
+    assert.deepEqual(JSON.parse(JSON.stringify(restored.academy)), { quiz: {}, practice: {}, links: {}, diagnostic: null });
     const metrics = context.window.PublicFeatures.metrics(restored, course);
     assert.equal(metrics.done, 1);
     assert.equal(metrics.accuracy, 50);
@@ -103,11 +103,11 @@ test('the new boot script, academy and both language bundles are available offli
   const sw = read('sw.js');
   const assets = JSON.parse(sw.match(/const ASSETS=(\[[^;]+\]);/)[1]);
   assert.ok(assets.includes('./curriculum.v6.js'));
-  for (const name of ['app', 'app.en', 'boot', 'academy', 'academy-content', 'academy-practice', 'sql-worker']) {
-    assert.ok(assets.includes('./' + name + '.v7.js'));
-  }
+  for (const name of ['app', 'app.en', 'boot', 'brand', 'features', 'features.en']) assert.ok(assets.includes('./' + name + '.v8.js'));
+  for (const name of ['academy', 'academy-content', 'academy-practice', 'sql-worker']) assert.ok(assets.includes('./' + name + '.v7.js'));
   assert.ok(assets.includes('./downloads/Atolye_Yerel_Pratik.zip'));
-  assert.ok(read('index.html').includes('./boot.v7.js'));
+  assert.ok(assets.includes('./brand/illustrations.svg'));
+  assert.ok(read('index.html').includes('./boot.v8.js'));
   for (const asset of assets) assert.ok(existsSync(path.join(__dirname, '..', asset)), asset);
 });
 
@@ -160,6 +160,10 @@ test('placement, quiz mastery and practice history persist independently', () =>
   assert.equal(academy.overview(course, state).verified, 1);
   assert.throws(() => academy.readReport({ ...report, checks: [report.checks[0], report.checks[0], report.checks[1]] }));
   academy.recordPractice(data, 'sql-join', 1, 1, 14);
+  data.links['hafta-1'] = academy.projectLink('https://github.com/example/taskflow/');
+  assert.equal(data.links['hafta-1'], 'https://github.com/example/taskflow');
+  assert.equal(academy.projectLink('https://github.com.evil.test/example/taskflow'), null);
+  assert.equal(academy.projectLink('https://person@github.com/example/taskflow'), null);
   assert.deepEqual(JSON.parse(JSON.stringify(academy.validate(data, course, ['join']))), JSON.parse(JSON.stringify(data)));
 });
 
